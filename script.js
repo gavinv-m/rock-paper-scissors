@@ -11,3 +11,32 @@ function getComputerChoice() {
 
     return computerSelection;
 }
+
+function playerSelection() {
+    let playerChoice = prompt('Rock, Paper, or Scissors?');
+
+    // Capitalize the first letter
+    playerChoice = playerChoice.toLowerCase().charAt(0).toLocaleUpperCase() + playerChoice.toLowerCase().slice(1);
+
+    // Check for spelling errors
+    let referenceString = 'Rock',
+    referenceString1 = 'Paper', 
+    referenceString2 = 'Scissors';
+
+    switch(playerChoice) {
+        case referenceString:
+            break; 
+            
+        case referenceString1:
+            break;
+
+        case referenceString2:
+            break; 
+
+        default:
+            alert('Please enter a correctly spelled option')
+            playerSelection();
+    }
+
+    return playerChoice;
+}
