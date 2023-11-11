@@ -48,27 +48,27 @@ function playRound(computer, player) {
     let decision;
     
     if (playerChoice === computerChoice) {
-        return decision = `Draw! You both chose ${computerChoice}`;
+        return decision = `Draw! You both chose ${computerChoice}.`;
     }
 
     else if (playerChoice === 'Rock') {
         return decision = 
-        (computerChoice === 'Scissors') ? `You win ${playerChoice} beats ${computerChoice}` :
-        (computerChoice === 'Paper') ? `You lose ${computerChoice} beats ${playerChoice}` : 
+        (computerChoice === 'Scissors') ? `You win ${playerChoice} beats ${computerChoice}.` :
+        (computerChoice === 'Paper') ? `You lose ${computerChoice} beats ${playerChoice}.` : 
         null; 
     }
 
     else if (playerChoice === 'Paper') {
         return decision = 
-        (computerChoice === 'Rock') ? `You win ${playerChoice} beats ${computerChoice}` :
-        (computerChoice === 'Scissors') ? `You lose ${computerChoice} beats ${playerChoice}` : 
+        (computerChoice === 'Rock') ? `You win ${playerChoice} beats ${computerChoice}.` :
+        (computerChoice === 'Scissors') ? `You lose ${computerChoice} beats ${playerChoice}.` : 
         null;
     }
 
     else if (playerChoice === 'Scissors') {
         return decision = 
-        (computerChoice === 'Paper') ? `You win ${playerChoice} beats ${computerChoice}` :
-        (computerChoice === 'Rock') ? `You lose ${computerChoice} beats ${playerChoice}` :
+        (computerChoice === 'Paper') ? `You win ${playerChoice} beats ${computerChoice}.` :
+        (computerChoice === 'Rock') ? `You lose ${computerChoice} beats ${playerChoice}.` :
         null;
     }
 }
