@@ -65,7 +65,7 @@ function playRound(computer, player) {
         null;
     }
 
-    else if (playerChoice === 'Scissors') {
+    else (playerChoice === 'Scissors') {
         return decision = 
         (computerChoice === 'Paper') ? `You win ${playerChoice} beats ${computerChoice}.` :
         (computerChoice === 'Rock') ? `You lose ${computerChoice} beats ${playerChoice}.` :
