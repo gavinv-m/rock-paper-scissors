@@ -78,41 +78,32 @@ function playRound(computer, player) {
     }
 
     else if (playerChoice === 'Rock') {
-        if (computerChoice === 'Scissors') {
-            console.log(`You win ${playerChoice} beats ${computerChoice}.`);
-            playerPoint++;
-        }
-        
-        else {
-            console.log(`You lose ${computerChoice} beats ${playerChoice}.`);
-            computerPoint++;
 
-        }
+        computerChoice === 'Scissors' ? 
+        (console.log(`You win ${playerChoice} beats ${computerChoice}.`), 
+        playerPoint++) :
+        (console.log(`You lose ${computerChoice} beats ${playerChoice}.`), 
+        computerPoint++);
     }
 
     else if (playerChoice === 'Paper') {
-        if (computerChoice === 'Rock') {
-            console.log(`You win ${playerChoice} beats ${computerChoice}.`);
-            playerPoint++;
-        }
 
-        else {
-            console.log( `You lose ${computerChoice} beats ${playerChoice}.`);
-            computerPoint++;
-        }
+        computerChoice === 'Rock' ? 
+        (console.log(`You win ${playerChoice} beats ${computerChoice}.`), 
+        playerPoint++) : 
+        (console.log(`You lose ${computerChoice} beats ${playerChoice}.`), 
+        computerPoint++);
     }
 
     // playerChoice equals Scissors
     else {
-        if (computerChoice === 'Paper') {
-            console.log(`You win ${playerChoice} beats ${computerChoice}.`);
-            playerPoint++;
-        }
+        
+        computerChoice === 'Paper' ? 
+        (console.log(`You win ${playerChoice} beats ${computerChoice}.`), 
+        playerPoint++) : 
+        (console.log(`You lose ${computerChoice} beats ${playerChoice}.`), 
+        computerPoint++);
 
-        else {
-            console.log(`You lose ${computerChoice} beats ${playerChoice}.`);
-            computerPoint++;
-        }
     }
 
     points = [computerPoint, playerPoint];
