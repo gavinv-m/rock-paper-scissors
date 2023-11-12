@@ -1,15 +1,15 @@
-// Global Variables 
-let getComputerChoice;
-let playerSelection;
+let setComputerChoice;
+let getPlayerSelection;
 
-function game(round) {
+function playGame(round) {
 
     let computerScore = 0;
     let playerScore = 0;
+    let scores = [];
 
     for (let i = 0; i < 5; i++) {
 
-        let scores = round(getComputerChoice, playerSelection);
+        scores = round(setComputerChoice, getPlayerSelection);
         
         computerScore += scores[0];
         playerScore += scores[1]; 
@@ -21,7 +21,7 @@ function game(round) {
     null;
 }
 
-getComputerChoice = function() {
+setComputerChoice = function() {
     let computerSelection;
     
     // Generate random number between 1 & 3 
@@ -35,7 +35,7 @@ getComputerChoice = function() {
     return computerSelection;
 }
 
-playerSelection = function() {
+getPlayerSelection = function() {
     let playerChoice = prompt('Rock, Paper, or Scissors?');
 
     // Capitalize the first letter
@@ -58,7 +58,7 @@ playerSelection = function() {
 
         default:
             alert('Please enter a correctly spelled option')
-            playerSelection();
+            getPlayerSelection();
     }
 
     return playerChoice;
@@ -69,8 +69,8 @@ function playRound(computer, player) {
     const computerChoice = computer();
     const playerChoice = player();
 
-    let computerPoint = 0; 
-    let playerPoint = 0; 
+    let computerPoints = 0; 
+    let playerPoints = 0; 
     let points = []; 
     
     if (playerChoice === computerChoice) {
@@ -81,18 +81,18 @@ function playRound(computer, player) {
 
         computerChoice === 'Scissors' ? 
         (console.log(`You win ${playerChoice} beats ${computerChoice}.`), 
-        playerPoint++) :
+        playerPoints++) :
         (console.log(`You lose ${computerChoice} beats ${playerChoice}.`), 
-        computerPoint++);
+        computerPoints++);
     }
 
     else if (playerChoice === 'Paper') {
 
         computerChoice === 'Rock' ? 
         (console.log(`You win ${playerChoice} beats ${computerChoice}.`), 
-        playerPoint++) : 
+        playerPoints++) : 
         (console.log(`You lose ${computerChoice} beats ${playerChoice}.`), 
-        computerPoint++);
+        computerPoints++);
     }
 
     // playerChoice equals Scissors
@@ -100,14 +100,14 @@ function playRound(computer, player) {
         
         computerChoice === 'Paper' ? 
         (console.log(`You win ${playerChoice} beats ${computerChoice}.`), 
-        playerPoint++) : 
+        playerPoints++) : 
         (console.log(`You lose ${computerChoice} beats ${playerChoice}.`), 
-        computerPoint++);
+        computerPoints++);
 
     }
 
-    points = [computerPoint, playerPoint];
+    points = [computerPoints, playerPoints];
     return points;
 }
 
-console.log(game(playRound)); 
+console.log(playGame(playRound)); 
