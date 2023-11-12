@@ -5,15 +5,20 @@ let playerSelection;
 function game(round) {
 
     let computerScore = 0;
-    let playerScore = 0; 
+    let playerScore = 0;
 
     for (let i = 0; i < 5; i++) {
 
-        scores = round(getComputerChoice, playerSelection);
+        let scores = round(getComputerChoice, playerSelection);
         
         computerScore += scores[0];
         playerScore += scores[1]; 
     }
+
+    return decision = (computerScore === playerScore) ? `Its a Draw!` :
+    (playerScore > computerScore) ? `You win ${playerScore} - ${computerScore}!` :
+    (computerScore > playerScore) ? `You lose ${playerScore} - ${computerScore}` :
+    null;
 }
 
 getComputerChoice = function() {
@@ -53,7 +58,7 @@ playerSelection = function() {
 
         default:
             alert('Please enter a correctly spelled option')
-            playerSelection;
+            playerSelection();
     }
 
     return playerChoice;
@@ -66,24 +71,22 @@ function playRound(computer, player) {
 
     let computerPoint = 0; 
     let playerPoint = 0; 
-    let points = [computerPoint, playerPoint]; 
+    let points = []; 
     
     if (playerChoice === computerChoice) {
-        console.log(`Draw! You both chose ${computerChoice}.`);
-        return points; 
+        console.log(`Draw! You both chose ${computerChoice}.`); 
     }
 
     else if (playerChoice === 'Rock') {
         if (computerChoice === 'Scissors') {
             console.log(`You win ${playerChoice} beats ${computerChoice}.`);
             playerPoint++;
-            return points;
         }
         
         else {
             console.log(`You lose ${computerChoice} beats ${playerChoice}.`);
             computerPoint++;
-            return points;
+
         }
     }
 
@@ -91,13 +94,11 @@ function playRound(computer, player) {
         if (computerChoice === 'Rock') {
             console.log(`You win ${playerChoice} beats ${computerChoice}.`);
             playerPoint++;
-            return points;
         }
 
         else {
             console.log( `You lose ${computerChoice} beats ${playerChoice}.`);
             computerPoint++;
-            return points;
         }
     }
 
@@ -106,15 +107,16 @@ function playRound(computer, player) {
         if (computerChoice === 'Paper') {
             console.log(`You win ${playerChoice} beats ${computerChoice}.`);
             playerPoint++;
-            return points;
         }
 
         else {
             console.log(`You lose ${computerChoice} beats ${playerChoice}.`);
             computerPoint++;
-            return points;
         }
     }
+
+    points = [computerPoint, playerPoint];
+    return points;
 }
 
-game(playRound); 
+console.log(game(playRound)); 
