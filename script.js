@@ -1,3 +1,5 @@
+playRound(getComputerChoice, playerSelection);
+
 function getComputerChoice() {
     let computerSelection;
     
@@ -45,32 +47,40 @@ function playRound(computer, player) {
 
     const computerChoice = computer();
     const playerChoice = player();
-    let decision;
     
     if (playerChoice === computerChoice) {
-        return decision = `Draw! You both chose ${computerChoice}.`;
+        console.log(`Draw! You both chose ${computerChoice}.`);
     }
 
     else if (playerChoice === 'Rock') {
-        return decision = 
-        (computerChoice === 'Scissors') ? `You win ${playerChoice} beats ${computerChoice}.` :
-        (computerChoice === 'Paper') ? `You lose ${computerChoice} beats ${playerChoice}.` : 
-        null; 
+        if (computerChoice === 'Scissors') {
+            console.log(`You win ${playerChoice} beats ${computerChoice}.`);
+        }
+        
+        else {
+            console.log(`You lose ${computerChoice} beats ${playerChoice}.`);
+        }
     }
 
     else if (playerChoice === 'Paper') {
-        return decision = 
-        (computerChoice === 'Rock') ? `You win ${playerChoice} beats ${computerChoice}.` :
-        (computerChoice === 'Scissors') ? `You lose ${computerChoice} beats ${playerChoice}.` : 
-        null;
+        if (computerChoice === 'Rock') {
+            console.log(`You win ${playerChoice} beats ${computerChoice}.`);
+        }
+
+        else {
+            console.log( `You lose ${computerChoice} beats ${playerChoice}.`);
+        }
     }
 
+    // playerChoice equals Scissors
     else {
-        return decision = 
-        (computerChoice === 'Paper') ? `You win ${playerChoice} beats ${computerChoice}.` :
-        (computerChoice === 'Rock') ? `You lose ${computerChoice} beats ${playerChoice}.` :
-        null;
+        if (computerChoice === 'Paper') {
+            console.log(`You win ${playerChoice} beats ${computerChoice}.`); 
+        }
+
+        else {
+            console.log(`You lose ${computerChoice} beats ${playerChoice}.`);
+        }
     }
 }
 
-console.log(playRound(getComputerChoice, playerSelection));
