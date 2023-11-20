@@ -1,25 +1,14 @@
 let setComputerChoice;
 let getPlayerSelection;
 
-function playGame(round) {
+const buttons = document.querySelectorAll('button');
+buttons.forEach(function(button) {
+    
+    button.addEventListener('click', function() {
 
-    let computerScore = 0;
-    let playerScore = 0;
-    let scores = [];
-
-    for (let i = 0; i < 5; i++) {
-
-        scores = round(setComputerChoice, getPlayerSelection);
-        
-        computerScore += scores[0];
-        playerScore += scores[1]; 
-    }
-
-    return decision = (computerScore === playerScore) ? `Its a Draw!` :
-    (playerScore > computerScore) ? `You win ${playerScore} - ${computerScore}!` :
-    (computerScore > playerScore) ? `You lose ${playerScore} - ${computerScore}` :
-    null;
-}
+        playRound(setComputerChoice, getPlayerSelection);
+    });
+});
 
 setComputerChoice = function() {
     let computerSelection;
@@ -68,30 +57,32 @@ function playRound(computer, player) {
 
     const computerChoice = computer();
     const playerChoice = player();
+    
+    const paragraphText = document.getElementById('decision');
 
     let computerPoints = 0; 
     let playerPoints = 0; 
     let points = []; 
     
     if (playerChoice === computerChoice) {
-        console.log(`Draw! You both chose ${computerChoice}.`); 
+        paragraphText.textContent = `Draw! You both chose ${computerChoice}.`; 
     }
 
     else if (playerChoice === 'Rock') {
 
         computerChoice === 'Scissors' ? 
-        (console.log(`You win ${playerChoice} beats ${computerChoice}.`), 
+        (paragraphText.textContent = `You win ${playerChoice} beats ${computerChoice}.`, 
         playerPoints++) :
-        (console.log(`You lose ${computerChoice} beats ${playerChoice}.`), 
+        (paragraphText.textContent = `You lose ${computerChoice} beats ${playerChoice}.`, 
         computerPoints++);
     }
 
     else if (playerChoice === 'Paper') {
 
         computerChoice === 'Rock' ? 
-        (console.log(`You win ${playerChoice} beats ${computerChoice}.`), 
+        (paragraphText.textContent = `You win ${playerChoice} beats ${computerChoice}.`, 
         playerPoints++) : 
-        (console.log(`You lose ${computerChoice} beats ${playerChoice}.`), 
+        (paragraphText.textContent = `You lose ${computerChoice} beats ${playerChoice}.`, 
         computerPoints++);
     }
 
@@ -99,9 +90,9 @@ function playRound(computer, player) {
     else {
         
         computerChoice === 'Paper' ? 
-        (console.log(`You win ${playerChoice} beats ${computerChoice}.`), 
+        (paragraphText.textContent = `You win ${playerChoice} beats ${computerChoice}.`, 
         playerPoints++) : 
-        (console.log(`You lose ${computerChoice} beats ${playerChoice}.`), 
+        (paragraphText.textContent = `You lose ${computerChoice} beats ${playerChoice}.`, 
         computerPoints++);
 
     }
@@ -110,4 +101,4 @@ function playRound(computer, player) {
     return points;
 }
 
-console.log(playGame(playRound)); 
+// console.log(playGame(playRound)); 
