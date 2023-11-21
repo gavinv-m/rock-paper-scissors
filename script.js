@@ -1,14 +1,40 @@
 let setComputerChoice;
-let getPlayerSelection;
+let playerChoice;
+
+const paragraphText = document.getElementById('decision');
+const computerScoreBoardScore = document.getElementById('computerScore'); 
+const playerScoreBoardScore = document.getElementById('playerScore');
+
+let computerScore = 0;
+let playerScore = 0;
+let scores = [];
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach(function(button) {
     
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function(e) {
 
-        playRound(setComputerChoice, getPlayerSelection);
+        playerChoice = e.target.innerText; 
+        playGame(playRound);
     });
 });
+
+function playGame(round) {
+
+    scores = round(setComputerChoice, playerChoice);
+
+    computerScore += scores[0];
+    playerScore += scores[1];
+    
+    computerScoreBoardScore.textContent = computerScore;
+    playerScoreBoardScore.textContent = playerScore;
+
+    paragraphText.textContent = (playerScore === 5) ? 
+    `You win ${playerScore} - ${computerScore}` :
+    (computerScore === 5) ?  `You lose ${playerScore} - ${computerScore}` :
+    paragraphText.textContent;
+
+}
 
 setComputerChoice = function() {
     let computerSelection;
@@ -24,41 +50,10 @@ setComputerChoice = function() {
     return computerSelection;
 }
 
-getPlayerSelection = function() {
-    let playerChoice = prompt('Rock, Paper, or Scissors?');
 
-    // Capitalize the first letter
-    playerChoice = playerChoice.toLowerCase().charAt(0).toLocaleUpperCase() + playerChoice.toLowerCase().slice(1);
-
-    // Check for spelling errors
-    let referenceString = 'Rock',
-    referenceString1 = 'Paper', 
-    referenceString2 = 'Scissors';
-
-    switch(playerChoice) {
-        case referenceString:
-            break; 
-            
-        case referenceString1:
-            break;
-
-        case referenceString2:
-            break; 
-
-        default:
-            alert('Please enter a correctly spelled option')
-            getPlayerSelection();
-    }
-
-    return playerChoice;
-}
-
-function playRound(computer, player) {
+function playRound(computer, playerChoice) {
 
     const computerChoice = computer();
-    const playerChoice = player();
-    
-    const paragraphText = document.getElementById('decision');
 
     let computerPoints = 0; 
     let playerPoints = 0; 
@@ -100,5 +95,3 @@ function playRound(computer, player) {
     points = [computerPoints, playerPoints];
     return points;
 }
-
-// console.log(playGame(playRound)); 
