@@ -1,6 +1,7 @@
 let setComputerChoice;
 let playerChoice;
 
+const buttons = document.querySelectorAll('button');
 const paragraphText = document.getElementById('decision');
 const computerScoreBoardScore = document.getElementById('computerScore'); 
 const playerScoreBoardScore = document.getElementById('playerScore');
@@ -9,7 +10,6 @@ let computerScore = 0;
 let playerScore = 0;
 let scores = [];
 
-const buttons = document.querySelectorAll('button');
 buttons.forEach(function(button) {
     
     button.addEventListener('click', function(e) {
@@ -20,6 +20,14 @@ buttons.forEach(function(button) {
 });
 
 function playGame(round) {
+
+    if (computerScore === 5 || playerScore === 5) {
+        computerScore = 0;
+        playerScore = 0;
+
+        computerScoreBoardScore.textContent = computerScore;
+        playerScoreBoardScore.textContent = playerScore;
+    }
 
     scores = round(setComputerChoice, playerChoice);
 
